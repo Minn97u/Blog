@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  let post = "강남 고기 맛집";
+  const [a, b] = useState("남자 코트 추천");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>Blog</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="black-nav">
+        <h1 style={{ color: "white", fontSize: "30px" }}>
+          Welcome to Mingyu's blog
+        </h1>
+      </div>
+      <div className="list">
+        <h3>1. 글제목</h3>
+        <p>2월 17일 발행</p>
+      </div>
+      <div className="list">
+        <h3>2. {a}</h3>
+        <p>2월 18일 발행</p>
+      </div>
+      <div className="list">
+        <h3>3. 글제목</h3>
+        <p>2월 19일 발행</p>
+      </div>
     </div>
   );
 }
