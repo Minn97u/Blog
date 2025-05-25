@@ -4,12 +4,14 @@ import "./App.css";
 function App() {
   // let post = "강남 고기 맛집";
   const [a, b] = useState("남자 코트 추천");
-  const [logo, setLoge] = useState("Welcome to Mingyu's blog");
+  const [logo, setLoge] = useState("Mingyu's blog");
 
   return (
     <div className="App">
       <div className="black-nav">
-        <h1 style={{ color: "white", fontSize: "30px" }}>{logo}</h1>
+        <h1 style={{ color: "white", fontSize: "30px" }}>
+          Welcome to Mingyu's blog
+        </h1>
       </div>
       <div className="list">
         <h3>1. 글제목</h3>
