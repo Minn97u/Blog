@@ -40,12 +40,20 @@ function App() {
         <p>2월 18일 발행</p>
       </div>
       <div className="list">
-        <h3>3. {title[2]}</h3>
+        <h3
+          onClick={() => {
+            if (modal === false) {
+              setModal(true);
+            } else {
+              setModal(false);
+            }
+          }}
+        >
+          3. {title[2]}
+        </h3>
         <p>2월 19일 발행</p>
       </div>
-      {
-        modal === true ? <Modal /> : null
-      }
+      {modal === true ? <Modal /> : null}
     </div>
   );
 }
