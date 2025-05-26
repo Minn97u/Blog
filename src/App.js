@@ -21,6 +21,12 @@ function App() {
     }
   };
 
+  const changeTitle = () => {
+    const newTitle = [...title];
+    newTitle[0] = "여자 코트 추천";
+    setTitle(newTitle);
+  };
+
   const changeLike = (i) => {
     const newLike = [...like];
     newLike[i] += 1;
@@ -48,18 +54,21 @@ function App() {
           </div>
         );
       })}
-      {modal === true ? <Modal /> : null}
+      {modal === true ? (
+        <Modal title={title} changeTitle={changeTitle} />
+      ) : null}
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <>
       <div className="modal">
-        <h2>제목</h2>
+        <h2>{props.title[0]}</h2>
         <p>날짜</p>
         <p>상세 내용</p>
+        <button onClick={props.changeTitle}>글 수정</button>
       </div>
     </>
   );
