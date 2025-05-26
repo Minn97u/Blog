@@ -10,13 +10,21 @@ function App() {
     "강남 우동 맛집",
     "파이썬독학",
   ]);
-  const [like, setLike] = useState(0);
+  const [like, setLike] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
 
-  const changeTitle = () => {
-    const newTitle = [...title];
-    newTitle[0] = "여자 코트 추천";
-    setTitle(newTitle);
+  const openModal = () => {
+    if (modal === false) {
+      setModal(true);
+    } else {
+      setModal(false);
+    }
+  };
+
+  const changeLike = (i) => {
+    const newLike = [...like];
+    newLike[i] += 1;
+    setLike(newLike);
   };
 
   return (
@@ -26,33 +34,20 @@ function App() {
           Welcome to Mingyu's blog
         </h1>
       </div>
-      <div className="list">
-        <h3>
-          1. {title[0]} <span onClick={changeTitle}>👩‍🦰</span>{" "}
-        </h3>
-        <p>2월 17일 발행</p>
-        <div style={{ marginBottom: "10px" }}>
-          <span onClick={() => setLike(like + 1)}>👍🏻</span> {like}
-        </div>
-      </div>
-      <div className="list">
-        <h3>2. {title[1]}</h3>
-        <p>2월 18일 발행</p>
-      </div>
-      <div className="list">
-        <h3
-          onClick={() => {
-            if (modal === false) {
-              setModal(true);
-            } else {
-              setModal(false);
-            }
-          }}
-        >
-          3. {title[2]}
-        </h3>
-        <p>2월 19일 발행</p>
-      </div>
+
+      {title.map((a, i) => {
+        return (
+          <div className="list" key={i}>
+            <h3 onClick={openModal}>
+              {i + 1}. {a}
+            </h3>
+            <p>2월 17일 발행</p>
+            <div style={{ marginBottom: "10px" }}>
+              <span onClick={() => changeLike(i)}>👍🏻</span> {like[i]}
+            </div>
+          </div>
+        );
+      })}
       {modal === true ? <Modal /> : null}
     </div>
   );
