@@ -12,8 +12,10 @@ function App() {
   ]);
   const [like, setLike] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
+  const [titleindex, setTitleIndex] = useState(null);
 
-  const openModal = () => {
+  const openModal = (i) => {
+    setTitleIndex(i);
     if (modal === false) {
       setModal(true);
     } else {
@@ -44,7 +46,7 @@ function App() {
       {title.map((a, i) => {
         return (
           <div className="list" key={i}>
-            <h3 onClick={openModal}>
+            <h3 onClick={() => openModal(i)}>
               {i + 1}. {a}
             </h3>
             <p>2월 17일 발행</p>
@@ -55,7 +57,7 @@ function App() {
         );
       })}
       {modal === true ? (
-        <Modal title={title} changeTitle={changeTitle} />
+        <Modal title={title[titleindex]} changeTitle={changeTitle} />
       ) : null}
     </div>
   );
@@ -65,10 +67,10 @@ function Modal(props) {
   return (
     <>
       <div className="modal">
-        <h2>{props.title[0]}</h2>
+        <h2>{props.title}</h2>
         <p>날짜</p>
         <p>상세 내용</p>
-        <button onClick={props.changeTitle}>글 수정</button>
+        <button onClick={() => props.changeTitle()}>글 수정</button>
       </div>
     </>
   );
