@@ -56,6 +56,12 @@ function App() {
           </div>
         );
       })}
+
+      <input
+        onChange={(e) => {
+          console.log(e.target.value);
+        }}
+      />
       {modal === true ? (
         <Modal title={title[titleindex]} changeTitle={changeTitle} />
       ) : null}
