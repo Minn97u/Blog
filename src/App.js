@@ -36,15 +36,24 @@ function App() {
     setLike(newLike);
   };
 
-  const addPost = () => {};
-
-  const deletePost = (i) => {
-    const newTitle = [...title];
-    newTitle.splice(i, 1);
+  const addPost = () => {
+    if (inputValue.trim() === "") {
+      alert("글 제목을 입력해주세요");
+      return;
+    }
+    const newTitle = [...title, inputValue];
     setTitle(newTitle);
 
-    const newLike = [...like];
-    newLike.splice(i, 1);
+    const newLike = [...like, 0];
+    setLike(newLike);
+
+    setInputValue("");
+  };
+
+  const deletePost = (i) => {
+    const newTitle = title.filter((_, index) => index !== i);
+    setTitle(newTitle);
+    const newLike = like.filter((_, index) => index !== i);
     setLike(newLike);
   };
 
@@ -81,12 +90,12 @@ function App() {
       })}
 
       <input
+        value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
-          console.log(inputValue);
         }}
       />
-      <button>in 글 발행</button>
+      <button onClick={() => addPost()}>in 글 발행</button>
       {modal === true ? (
         <Modal title={title[titleindex]} changeTitle={changeTitle} />
       ) : null}
