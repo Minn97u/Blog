@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -41,10 +41,10 @@ function App() {
       alert("글 제목을 입력해주세요");
       return;
     }
-    const newTitle = [...title, inputValue];
+    const newTitle = [inputValue, ...title];
     setTitle(newTitle);
 
-    const newLike = [...like, 0];
+    const newLike = [0, ...like];
     setLike(newLike);
 
     setInputValue("");
@@ -99,6 +99,7 @@ function App() {
       {modal === true ? (
         <Modal title={title[titleindex]} changeTitle={changeTitle} />
       ) : null}
+      <Modal2 />
     </div>
   );
 }
@@ -114,6 +115,26 @@ function Modal(props) {
       </div>
     </>
   );
+}
+
+class Modal2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Mingyu",
+      age: 20,
+    };
+  }
+  render() {
+    return (
+      <div className="modal">
+        <h2>{this.state.name}</h2>
+        <p>나이 : {this.state.age}</p>
+        <p>상세 내용</p>
+        <button onClick={() => this.setState({ age: 21 })}>글 수정</button>
+      </div>
+    );
+  }
 }
 
 export default App;
