@@ -13,6 +13,7 @@ function App() {
   const [like, setLike] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
   const [titleindex, setTitleIndex] = useState(null);
+  const [inputValue, setInputValue] = useState("");
 
   const openModal = (i) => {
     setTitleIndex(i);
@@ -35,6 +36,18 @@ function App() {
     setLike(newLike);
   };
 
+  const addPost = () => {};
+
+  const deletePost = (i) => {
+    const newTitle = [...title];
+    newTitle.splice(i, 1);
+    setTitle(newTitle);
+
+    const newLike = [...like];
+    newLike.splice(i, 1);
+    setLike(newLike);
+  };
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -46,12 +59,22 @@ function App() {
       {title.map((a, i) => {
         return (
           <div className="list" key={i}>
-            <h3 onClick={() => openModal(i)}>
-              {i + 1}. {a}
-            </h3>
+            <div>
+              <h3 onClick={() => openModal(i)}>
+                {i + 1}. {a}
+              </h3>
+            </div>
             <p>2월 17일 발행</p>
             <div style={{ marginBottom: "10px" }}>
               <span onClick={() => changeLike(i)}>👍🏻</span> {like[i]}
+              <button
+                style={{ marginLeft: "10px" }}
+                onClick={() => {
+                  deletePost(i);
+                }}
+              >
+                삭제
+              </button>
             </div>
           </div>
         );
@@ -59,9 +82,11 @@ function App() {
 
       <input
         onChange={(e) => {
-          console.log(e.target.value);
+          setInputValue(e.target.value);
+          console.log(inputValue);
         }}
       />
+      <button>in 글 발행</button>
       {modal === true ? (
         <Modal title={title[titleindex]} changeTitle={changeTitle} />
       ) : null}
