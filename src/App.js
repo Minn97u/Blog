@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import "./App.css";
 
 function App() {
@@ -19,6 +19,14 @@ function App() {
         </Container>
       </Navbar>
       <div className="main-bg"></div>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">안녕</div>
+          <div className="col-md-4">안녕</div>
+          <div className="col-md-4">안녕</div>
+          
+        </div>
+      </div>
     </div>
   );
 }
