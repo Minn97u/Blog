@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./App.css";
-import {data} from "./data";
+import data from "./data.js";
 
 function App() {
-  let [post] = useState();
+  let [post] = useState(data);
+
   return (
     <div className="App">
       <Navbar bg="light" data-bs-theme="light">
@@ -25,19 +26,18 @@ function App() {
         <div className="row">
           <div className="col-md-4">
             <img src="/jsLogo.png" width="70%"></img>
-            <h5>자바 스크립트 기초 문법</h5>
-            <p>내용</p>
-            <p>{a}</p>
+            <h5>{post[0].title}</h5>
+            <p>{post[0].content}</p>
           </div>
           <div className="col-md-4">
             <img src="/jsLogo.png" width="70%"></img>
-            <h5>자바 스크립트 응용</h5>
-            <p>내용</p>
+            <h5>{post[1].title}</h5>
+            <p>{post[1].content}</p>
           </div>
           <div className="col-md-4">
             <img src="/jsLogo.png" width="70%"></img>
-            <h5>var,let,const에 대해 알아보자</h5>
-            <p>내용</p>
+            <h5>{post[2].title}</h5>
+            <p>{post[2].content}</p>
           </div>
         </div>
       </div>
