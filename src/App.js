@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { Route, Routes, Link } from "react-router-dom";
 import "./App.css";
+import PostList from "./components/postList.js";
 import data from "./data.js";
 
 function App() {
@@ -21,26 +23,26 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      <div className="main-bg"></div>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4">
-            <img src="/jsLogo.png" width="70%"></img>
-            <h5>{post[0].title}</h5>
-            <p>{post[0].content}</p>
-          </div>
-          <div className="col-md-4">
-            <img src="/jsLogo.png" width="70%"></img>
-            <h5>{post[1].title}</h5>
-            <p>{post[1].content}</p>
-          </div>
-          <div className="col-md-4">
-            <img src="/jsLogo.png" width="70%"></img>
-            <h5>{post[2].title}</h5>
-            <p>{post[2].content}</p>
-          </div>
-        </div>
-      </div>
+    
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="main-bg"></div>
+              <div className="post-container">
+                <div className="row">
+                  <PostList posts={post} />
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route path="/projects" element={<PostList posts={post} />} />
+        <Route path="/aboutme" element={<PostList posts={post} />} />
+        <Route path="/gallery" element={<PostList posts={post} />} />
+      </Routes>
     </div>
   );
 }

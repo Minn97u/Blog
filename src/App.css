@@ -5,11 +5,11 @@
   background-position: center;
 }
 
-.container {
+.post-container {
   width: 100%;
-  max-width: 1200px;
   margin-top: 20px;
 }
+
 
 .App {
   text-align: center;
